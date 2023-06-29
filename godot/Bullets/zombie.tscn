@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://klunkfawi4wd"]
+
+[ext_resource type="Texture2D" uid="uid://bdqyky6u6ubfa" path="res://Zombie.png" id="1_0fpa7"]
+[ext_resource type="Script" path="res://zombie.gd" id="2_qkgg0"]
+[ext_resource type="Texture2D" uid="uid://cvd04jk0u2xvp" path="res://mask.png" id="3_pn5t3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0sbbu"]
+size = Vector2(7, 8)
+
+[node name="Zombie" type="Sprite2D" groups=["enemy"]]
+texture_filter = 1
+scale = Vector2(4, 4)
+texture = ExtResource("1_0fpa7")
+script = ExtResource("2_qkgg0")
+speed = 105
+
+[node name="Mask" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+texture = ExtResource("3_pn5t3")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_0sbbu")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

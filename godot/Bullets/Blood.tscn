@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://c75cpo621b48d"]
+
+[ext_resource type="Texture2D" uid="uid://bqotj1dur6aml" path="res://square.png" id="1_qxw7k"]
+[ext_resource type="Script" path="res://Blood.gd" id="2_x5o7k"]
+
+[sub_resource type="Curve" id="Curve_q22e4"]
+max_value = 100.0
+_data = [Vector2(0, 6.36364), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_d4ft5"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Gradient" id="Gradient_vfqcs"]
+colors = PackedColorArray(1, 0, 0, 1, 0.513753, 6.73831e-07, 5.77569e-07, 1)
+
+[node name="Blood" type="CPUParticles2D" groups=["enemy"]]
+z_index = -10
+z_as_relative = false
+texture_filter = 1
+emitting = false
+amount = 32
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.75
+randomness = 1.0
+lifetime_randomness = 1.0
+texture = ExtResource("1_qxw7k")
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 252.52
+initial_velocity_max = 353.53
+damping_min = 300.0
+damping_max = 500.0
+damping_curve = SubResource("Curve_q22e4")
+scale_amount_min = 2.0
+scale_amount_max = 3.0
+color_ramp = SubResource("Gradient_d4ft5")
+color_initial_ramp = SubResource("Gradient_vfqcs")
+script = ExtResource("2_x5o7k")
